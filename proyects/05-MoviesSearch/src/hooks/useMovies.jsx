@@ -1,9 +1,9 @@
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, useMemo } from 'react'
 
 const API_URL = search =>
   `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=es-ES&page=1`
 
-export function useMovies () {
+export function useMovies ({ sort, direction }) {
   const [responseMovies, setResponseMovies] = useState([])
   const movies = responseMovies.results
 
@@ -43,5 +43,22 @@ export function useMovies () {
     getMovies({ search })
   }, [])
 
-  return { movies: mappedMovies, getMovies: getMoviesCallback }
+  const sortedMovies = useMemo(() => {
+    return sort && mappedMovies
+      ? [...mappedMovies].sort((a, b) => {
+          const propA = a[sort]
+          const propB = b[sort]
+
+          if (sort !== 'default') {
+            const comparison = propA.localeCompare(propB)
+
+            return direction ? comparison : -comparison
+          } else {
+            return 0
+          }
+        })
+      : mappedMovies
+  }, [sort, direction, mappedMovies])
+
+  return { movies: sortedMovies, getMovies: getMoviesCallback }
 }
