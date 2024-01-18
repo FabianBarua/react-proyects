@@ -31,12 +31,12 @@ function App () {
 
   return (
     <>
-      <header className=' h-48 relative flex justify-center items-center'>
-        <h1 className=' text-2xl text-center '>React Shop 🛒</h1>
+      <header className=' h-44 px-4 bg-neutral-800/50 backdrop-blur-md w-full mb-48  fixed top-0  flex justify-center items-center'>
+        <h1 className=' text-2xl flex-1 text-center '>React Shop 🛒</h1>
         <Cart />
       </header>
-
       <Filters />
+
       <Products products={filteredProducts}></Products>
     </>
   )

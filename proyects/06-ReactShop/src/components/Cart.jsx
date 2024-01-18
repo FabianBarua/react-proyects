@@ -15,11 +15,11 @@ export const Cart = () => {
       </label>
 
       <input id={cartCheckboxId} type='checkbox' className='peer' hidden />
-      <div className=' peer-checked:flex flex-col hidden fixed w-64 min-h-64  overflow-hidden max-h-[96vh] bg-neutral-800/80 backdrop-blur-xl top-4 right-4 rounded-md'>
+      <div className=' peer-checked:flex flex-col hidden fixed w-64 min-h-64  overflow-hidden max-h-[96vh] bg-neutral-900 backdrop-blur-xl top-4 right-4 rounded-md'>
         <h1 className=' text-center text-xl text-neutral-200 py-3 px-6 border-b-neutral-500 border-b m-0 p-0 h-min w-full'>
           Cart 🔥
         </h1>
-        <div className='py-3 px-6 flex gap-4 flex-col '>
+        <div className='py-3 px-6 flex gap-4 flex-col overflow-auto '>
           {cart.map(product => {
             return (
               <div key={product.id} className='flex flex-col gap-4 rounded-md '>
@@ -31,7 +31,7 @@ export const Cart = () => {
                 <h3 className=' text-center'>{product.title}</h3>
                 <div className='flex justify-center gap-4'>
                   <button
-                    className=' w-0 h-0 p-4 flex justify-center items-center rounded-md border border-neutral-700 bg-neutral-800'
+                    className='  w-0 h-0 p-4 flex justify-center items-center rounded-md border border-neutral-700 bg-neutral-800 '
                     onClick={() => {
                       addToCart({ product })
                     }}

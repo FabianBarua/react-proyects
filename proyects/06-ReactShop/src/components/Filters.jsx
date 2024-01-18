@@ -22,9 +22,11 @@ export function Filters () {
   }
 
   return (
-    <section className='filters'>
-      <div>
-        <label htmlFor={minPriceFilterId}>Precio a partir de:</label>
+    <section className=' fixed flex bg-neutral-900 px-8 py-4 rounded-2xl gap-4 flex-col bottom-5 left-5 w-48'>
+      <div className='  flex flex-col gap-1'>
+        <label htmlFor={minPriceFilterId}>
+          Precio a partir de: ${filter.minPrice}
+        </label>
         <input
           type='range'
           id={minPriceFilterId}
@@ -32,13 +34,17 @@ export function Filters () {
           max='1000'
           onChange={handleChangeMinPrice}
           value={filter.minPrice}
+          className=' inline'
         />
-        <span>${filter.minPrice}</span>
       </div>
 
-      <div>
+      <div className=' flex flex-col gap-1'>
         <label htmlFor={categoryFilterId}>Categoría</label>
-        <select id={categoryFilterId} onChange={handleChangeCategory}>
+        <select
+          className=' bg-neutral-800 rounded-md'
+          id={categoryFilterId}
+          onChange={handleChangeCategory}
+        >
           <option value='all'>Todas</option>
           <option value='laptops'>Portátiles</option>
           <option value='smartphones'>Celulares</option>
