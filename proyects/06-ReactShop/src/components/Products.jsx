@@ -1,5 +1,10 @@
 import { AddToCartIcon } from './Icons'
+import { useContext } from 'react'
+import { cartContext } from '../context/cart'
+
 export const Products = ({ products }) => {
+  const { addToCart } = useContext(cartContext)
+
   return (
     <main className='products'>
       <ul>
@@ -10,7 +15,13 @@ export const Products = ({ products }) => {
               <div>
                 <strong>{product.title}</strong> - ${product.price}
               </div>
-              <button>{AddToCartIcon()}</button>
+              <button
+                onClick={() => {
+                  addToCart({ product })
+                }}
+              >
+                {AddToCartIcon()}
+              </button>
             </li>
           )
         })}

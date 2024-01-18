@@ -1,7 +1,9 @@
 import { useId } from 'react'
 import { useFilters } from '../hooks/useFilters.jsx'
 
-export function Filters ({ setFilter, filter }) {
+export function Filters () {
+  const { filter, setFilter } = useFilters()
+
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
 

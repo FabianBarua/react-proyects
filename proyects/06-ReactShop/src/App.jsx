@@ -2,15 +2,41 @@ import { Products } from './components/Products'
 import * as mock from './mocks/products.json'
 import { useFilters } from './hooks/useFilters'
 import { Filters } from './components/filters'
+import { Cart } from './components/Cart'
+
+const test = {
+  id: 1,
+  title: 'iPhone 9',
+  description: 'An apple mobile which is nothing like apple',
+  price: 549,
+  discountPercentage: 12.96,
+  rating: 4.69,
+  stock: 94,
+  brand: 'Apple',
+  category: 'smartphones',
+  thumbnail: 'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg',
+  images: [
+    'https://cdn.dummyjson.com/product-images/1/1.jpg',
+    'https://cdn.dummyjson.com/product-images/1/2.jpg',
+    'https://cdn.dummyjson.com/product-images/1/3.jpg',
+    'https://cdn.dummyjson.com/product-images/1/4.jpg',
+    'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg'
+  ]
+}
 
 function App () {
-  const { filter, setFilter, filterProducts } = useFilters()
+  const { filterProducts } = useFilters()
 
   const filteredProducts = filterProducts(mock.products)
 
   return (
     <>
-      <Filters setFilter={setFilter} filter={filter} />
+      <header className=' h-48 relative flex justify-center items-center'>
+        <h1 className=' text-2xl text-center '>React Shop 🛒</h1>
+        <Cart />
+      </header>
+
+      <Filters />
       <Products products={filteredProducts}></Products>
     </>
   )
