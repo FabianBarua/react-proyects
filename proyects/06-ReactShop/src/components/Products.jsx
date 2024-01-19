@@ -1,9 +1,9 @@
-import { AddToCartIcon, RemoveFromCartIcon } from './Icons'
+import { addQuantitytIcon, RemoveFromCartIcon } from './Icons'
 import { useContext } from 'react'
 import { cartContext } from '../context/cart'
 
 export const Products = ({ products }) => {
-  const { addToCart, removeFromCart, cart } = useContext(cartContext)
+  const { addQuantity, removeFromCart, cart } = useContext(cartContext)
 
   const checkProductInCart = ({ productCart }) => {
     return cart.some(pro => pro.id === productCart.id)
@@ -14,9 +14,9 @@ export const Products = ({ products }) => {
       <ul className=' w-2/3 mx-auto grid gap-7 grid-cols-[repeat(auto-fit,_minmax(150px,_200px))] place-content-center '>
         {products.map(product => {
           const inCart = checkProductInCart({ productCart: product })
-          const classNameProd = `mx-auto flex gap-4 rounded-lg bg-neutral-900 p-2 hover:bg-neutral-600/50 transition-all ease-in active:bg-neutral-600 ${
+          const classNameProd = ` mx-auto flex gap-4 rounded-lg bg-neutral-900 p-2 hover:bg-neutral-600/50 transition-all ease-in active:bg-neutral-600 border border-neutral-600 ${
             inCart &&
-            ' bg-red-900/50 border border-red-500 text-red-500 hover:bg-neutral-900/60'
+            ' bg-red-900/5  border-red-500 text-red-500 hover:bg-neutral-900/60'
           } `
           return (
             <li
@@ -37,11 +37,11 @@ export const Products = ({ products }) => {
                   {
                     inCart
                       ? removeFromCart({ product })
-                      : addToCart({ product })
+                      : addQuantity({ product, quantity: 1 })
                   }
                 }}
               >
-                {inCart ? RemoveFromCartIcon() : AddToCartIcon()} $
+                {inCart ? RemoveFromCartIcon() : addQuantitytIcon()} $
                 {product.price}
               </button>
             </li>

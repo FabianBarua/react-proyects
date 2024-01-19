@@ -10,19 +10,22 @@ export const CartProvider = ({ children }) => {
     setCart(prevState => prevState.filter(item => item.id !== product.id))
   }
 
-  const addToCart = ({ product }) => {
+  const addQuantity = ({ product, quantity = 1 }) => {
     const cartProductIndex = cart.findIndex(
       productInCart => productInCart.id === product.id
     )
 
     if (cartProductIndex >= 0) {
       const newCart = structuredClone(cart)
-      newCart[cartProductIndex].quantity += 1
+      newCart[cartProductIndex].quantity += quantity
+      newCart[cartProductIndex].quantity === 0 &&
+        newCart.splice(cartProductIndex, 1)
+
       setCart(newCart)
       return
     }
 
-    setCart(prevState => [...prevState, { ...product, quantity: 1 }])
+    setCart(prevState => [...prevState, { ...product, quantity: quantity }])
   }
 
   const clearCart = () => {
@@ -31,7 +34,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <cartContext.Provider
-      value={{ cart, addToCart, clearCart, removeFromCart }}
+      value={{ cart, addQuantity, clearCart, removeFromCart }}
     >
       {children}
     </cartContext.Provider>
