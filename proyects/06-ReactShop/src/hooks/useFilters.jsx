@@ -5,7 +5,6 @@ export const useFilters = () => {
   const { filter, setFilter } = useContext(FilterContext)
 
   const filterProducts = products => {
-    console.log(filter.category)
     return products.filter(product => {
       return (
         product.price >= filter.minPrice &&

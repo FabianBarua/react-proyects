@@ -4,26 +4,6 @@ import { useFilters } from './hooks/useFilters'
 import { Filters } from './components/filters'
 import { Cart } from './components/Cart'
 
-const test = {
-  id: 1,
-  title: 'iPhone 9',
-  description: 'An apple mobile which is nothing like apple',
-  price: 549,
-  discountPercentage: 12.96,
-  rating: 4.69,
-  stock: 94,
-  brand: 'Apple',
-  category: 'smartphones',
-  thumbnail: 'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg',
-  images: [
-    'https://cdn.dummyjson.com/product-images/1/1.jpg',
-    'https://cdn.dummyjson.com/product-images/1/2.jpg',
-    'https://cdn.dummyjson.com/product-images/1/3.jpg',
-    'https://cdn.dummyjson.com/product-images/1/4.jpg',
-    'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg'
-  ]
-}
-
 function App () {
   const { filterProducts } = useFilters()
 
@@ -31,7 +11,7 @@ function App () {
 
   return (
     <>
-      <header className=' h-44 px-4 bg-neutral-800/50 backdrop-blur-md w-full mb-48  fixed top-0  flex justify-center items-center'>
+      <header className=' h-24 px-4 bg-neutral-800/50 backdrop-blur-md w-full mb-48  fixed top-0  flex justify-center items-center'>
         <h1 className=' text-2xl flex-1 text-center '>React Shop 🛒</h1>
         <Cart />
       </header>

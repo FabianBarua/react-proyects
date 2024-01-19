@@ -24,7 +24,6 @@ function App () {
 
   const debounced = useDebouncedCallback(() => {
     getMovies({ search })
-    console.log(error)
   }, 500)
 
   const handleChange = event => {
@@ -37,7 +36,6 @@ function App () {
   const handleSortSelect = event => {
     const value = event.target.value
     setSort(value)
-    console.log(value)
   }
 
   const changeDirection = () => {

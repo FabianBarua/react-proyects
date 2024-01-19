@@ -37,7 +37,6 @@ export function useMovies ({ sort, direction }) {
         setResponseMovies([])
       }
       lastSearch.current = search
-      console.log(lastSearch)
     }
 
     getMovies({ search })
