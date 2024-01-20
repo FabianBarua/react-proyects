@@ -32,7 +32,7 @@ export function useMovies ({ sort, direction }) {
         fetch(API_URL(search), options)
           .then(response => response.json())
           .then(response => setResponseMovies(response))
-          .catch(err => console.error(err))
+          .catch(err => addQuantity.error(err))
       } else {
         setResponseMovies([])
       }

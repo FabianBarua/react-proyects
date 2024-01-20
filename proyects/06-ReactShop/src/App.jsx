@@ -1,15 +1,25 @@
-import * as mock from './mocks/products.json'
 import { useFilters } from './hooks/useFilters'
+import { useState, useEffect } from 'react'
+import { getProducts } from './services/products'
+
+//componentes
+
 import { Filters } from './components/filters'
 import { Cart } from './components/Cart'
 import { MainHeader } from './components/MainHeader'
 import { Products } from './components/Products'
 
 function App () {
+  const [products, setProducts] = useState([])
   const { filterProducts } = useFilters()
 
-  const filteredProducts = filterProducts(mock.products)
+  useEffect(() => {
+    getProducts().then(data => {
+      return setProducts(data)
+    })
+  }, [])
 
+  const filteredProducts = filterProducts(products)
   return (
     <>
       <MainHeader>
