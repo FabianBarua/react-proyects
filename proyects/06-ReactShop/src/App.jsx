@@ -4,7 +4,7 @@ import { getProducts } from './services/products'
 
 //componentes
 
-import { Filters } from './components/filters'
+import { Filters } from './components/Filters'
 import { Cart } from './components/Cart'
 import { MainHeader } from './components/MainHeader'
 import { Products } from './components/Products'
