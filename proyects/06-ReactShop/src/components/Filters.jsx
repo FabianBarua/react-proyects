@@ -50,8 +50,8 @@ export function Filters () {
           <option value='all'>Todas</option>
           {categories?.map(categorie => {
             return (
-              <option key={categorie} value={categorie}>
-                {categorie}
+              <option key={categorie.slug} value={categorie.slug}>
+                {categorie.name}
               </option>
             )
           })}
